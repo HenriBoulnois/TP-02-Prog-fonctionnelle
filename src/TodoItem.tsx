@@ -1,6 +1,7 @@
 import clsx from 'clsx';
+import { ReactElement } from 'react';
 
-export const TodoItem = ({ status, label, onChecked }) => {
+export const TodoItem = ({ status, label, onChecked }: { status: string; label: string; onChecked:(status: string) => void; }): ReactElement => {
   return (
     <div
       className={clsx('p-4 flex items-center', {
@@ -17,7 +18,7 @@ export const TodoItem = ({ status, label, onChecked }) => {
         disabled={status === 'archived'}
         type="checkbox"
         className="rounded text-pink-500 ml-8 cursor-pointer disabled:cursor-not-allowed disabled:bg-black disabled:hover:bg-black"
-        onChange={() => onChecked(status === 'open' ? 'done' : 'open')}
+        onChange={(): void => onChecked(status === 'open' ? 'done' : 'open')}
       />
     </div>
   );
